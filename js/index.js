@@ -23,9 +23,20 @@ let mobile_state = {1: {top: 1, left: 1},
                  }
 //VERIFICADOR DE PARA DIRECIONAR AS FUNCOES
 if (window.mobileCheck()){
-    $("#not").mouseover()
+    $("#not").mouseover(mobileHandler)
 }else{
     $("body").mousemove(webHandler)
+}
+//funcao para mobile
+function mobileHandler(event){
+    event.preventDefault()
+    mobileState = mobileState % 4 + 1 //mudando o estado 
+    //mudando o css
+    $("#not").css({
+        top: '$(mobileState[mobileState].top * 50)%',
+        left: '$(mobileState[mobileState].left * 50)%',
+        position: 'absolute'
+    })
 }
 
 //funcao para desktop
